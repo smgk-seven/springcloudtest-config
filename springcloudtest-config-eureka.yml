@@ -1,5 +1,13 @@
-﻿server:
+﻿spring:
+  profiles:
+    active: dev
+---
+server:
   port: 7001
+spring:
+  profiles: dev #开发环境
+  application:
+    name: springcloudtest-config-eureka
 eureka:
   instance:
     hostname: eureka7001.com #eureka服务端的实例名称
@@ -9,6 +17,3 @@ eureka:
     service-url:
       #单机版配置
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka #设置与eureka server 交互的地址查询服务和注册服务都需要依赖的地址
-      #集群配置
-      #defaultZone: http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
-      #eureta.server.enable-self-preservation: false #禁用自我保护程序
